@@ -1,3 +1,4 @@
+import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 
 import 'country.dart';
@@ -228,13 +229,10 @@ class _CountryListViewState extends State<CountryListView> {
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
       width: isRtl ? 50 : null,
-      child: Text(
-        country.iswWorldWide
-            ? '\uD83C\uDF0D'
-            : Utils.countryCodeToEmoji(country.countryCode),
-        style: TextStyle(
-          fontSize: widget.countryListTheme?.flagSize ?? 25,
-        ),
+      child: CountryFlags.flag(
+        country.countryCode,
+        height: widget.countryListTheme?.flagSize ?? 25,
+        width: widget.countryListTheme?.flagSize ?? 25,
       ),
     );
   }
